@@ -1,0 +1,95 @@
+This application translates ASL into text.
+<!DOCTYPE html>
+
+<html>
+<head>
+</head>
+<body>
+
+<h1>Hello Leap!</h1>
+
+<div id="output"></div>
+
+</body>
+
+<script src="http://js.leapmotion.com/leap-0.6.0-beta1.min.js"></script>
+<script type="text/javascript">
+
+function concatData(id, data) {
+
+    return id + ": " + data + "<br>";
+
+}
+
+var output = document.getElementById('output');
+var frameString = "", handString= "", fingerString = "";
+var hand, finger;
+var options = { enableGuestures: true};
+
+Leap.loop(options, function(frame) {
+
+    frameString = concatData("frame_id", frame.id);
+
+    frameString += concatData("num_hands", frame.hands.length);
+
+    frameString += concatData("num_fingers", frame.fingers.length);
+    
+        for (var i=0, len= frame.hands.length; i < len; i++){
+            hand=frame.hands[i];
+            handString=concatData("hand_type", hand.type);
+            for (var j=0; j<3; j++){
+                handString+=concatData(j, hand.fingers[1].direction[j]);
+            }
+        
+            var extendedFingers = 0;
+            for(var f = 0; f < hand.fingers.length; f++){
+                var finger = hand.fingers[f];
+                var nameMap = ["thumb", "index", "middle", "ring", "pinky"];
+                var fingerName = nameMap[finger.type];
+                handString+= fingerName;
+                if(finger.extended) {
+                    handString+=" is pointing <br>";
+                    ++extendedFingers;
+                }
+                else   
+                    handString+=" is NOT pointing <br>";
+            }
+            handString+=("Extended fingers: " + extendedFingers);
+            handString+="<br>";
+            
+            frameString += handString;
+            
+            
+        }
+    //ELENI, THIS IS ALL YOURS
+        function numOfExtended(){
+                var extendedFingers=0;
+                for (var i=0, len= frame.hands.length; i < len; i++){
+                    hand= frame.hands[i];
+                        for(var f = 0; f < hand.fingers.length; f++){
+                            finger = hand.fingers[f];
+                            if (finger.extended){
+                                ++extendedFingers;
+                            }
+                    }
+                }
+               return extendedFingers;
+           }
+                
+           frameString += "<br> The number of Extended Fingers is <br> "+ numOfExtended(); 
+    
+    
+    //NO MAS ELENI
+        frameString += "<br>";
+    
+output.innerHTML = frameString;
+    
+    
+
+});
+
+
+
+</script>
+
+</html>

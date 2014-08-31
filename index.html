@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <title>Handedness Demo</title>
+   
+    <script src="http://js.leapmotion.com/leap-0.6.2.min.js"></script>  
+
+   <!--  // <script src="//js.leapmotion.com/leap-plugins-0.1.6.1.js"></script>
+    // <script src="//js.leapmotion.com/leap.rigged-hand-0.1.3.min.js"></script> 
+   <script src="//cdnjs.cloudflare.com/ajax/libs/three.js/r66/three.js"></script>-->
+
+    <!-- CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css">
+        
+    <style>
+    </style>
+  </head>
+
+  <body>
+        <div class='background'></div>
+        <div id="output"></div>
+        <section id='text-container'>
+          <!-- This is where sign language text will be translated to -->
+        </section>
+
+        <footer>
+            <span id="title">Sign 2 Line </span>  
+            <span id="export-text-button" class="button">Export Text</span>
+            <span id="high-contrast-button" class="button">High Contrast</span>
+        </footer>
+
+        <section id='hands-container'>
+          <div id="labels"></div>
+        </section>
+
+
+        <div id='email-form-bg'>
+
+          <div class='email-form'>
+            <div class='email-form-header'>
+              <span class='export-text-exit-button'>X</span>
+              <span class='email-form-title'>Export Text</span>
+            </div>
+            <div class='email-form-description'>
+              <p>
+                <form action="emailform.php" method="post" class="">
+                  <h5>To:</h5>
+                  <input type="text" name="toAddress"  placeholder="email@address.com"><br>
+                  <h5>E-mail:</h5>
+                  <textarea name="email" rows="4"  placeholder="Type on..." id='email-form-text'></textarea><br>
+                  <div class="center-button">
+                    <input type="submit"> 
+                  </div>  
+                </form>
+              </p>
+            </div>
+          </div>
+
+
+          
+        </div>
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script src="js/uiController.js"></script>
+    <script src="js/leapController.js"></script>
+  </body>
+
+
+
+</html> 
