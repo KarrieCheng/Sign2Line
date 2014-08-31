@@ -116,24 +116,35 @@ body, html{margin:0; padding: 0;}
         height: 100%;
         width: 100%;
         background-color: rgba(155, 89, 182,0.9);
+
+        background-image: -webkit-linear-gradient(bottom,rgba(142, 68, 173,0.9), transparent),-webkit-linear-gradient(left,rgba(142, 68, 173,0.5), transparent);
+        background-image:  -moz-linear-gradient(bottom,rgba(142, 68, 173,0.9), transparent),-moz-linear-gradient(left,rgba(142, 68, 173,0.5), transparent);
+        background-image:  -o-linear-gradient(bottom,rgba(142, 68, 173,0.9), transparent),-o-linear-gradient(left,rgba(142, 68, 173,0.5), transparent);
+        background-image:  linear-gradient(bottom,rgba(142, 68, 173,0.9), transparent),linear-gradient(left,rgba(142, 68, 173,0.5), transparent);
         z-index: -1;
         top:0;
         bottom: 0;
     }
-      body{
-        font-family: 'Myriad Pro', Helvetica, Arial, 'Lucida Grande', sans-serif;
-        font-size: 24pt;
-        color: white;
-        overflow: hidden;
-        top:0;
-        bottom: 0;
-        background-image: url('../img/tiger.jpg');
-        background-size: cover;
-      }
-      label {
-        position: fixed;
-        white-space: nowrap;
-      }
+
+    .no-bg{
+      background-image: none;
+      background-color: whitesmoke;
+    }
+    body{
+      font-family: 'Myriad Pro', Helvetica, Arial, 'Lucida Grande', sans-serif;
+      font-size: 24pt;
+      color: white;
+      overflow: hidden;
+      top:0;
+      bottom: 0;
+      background-color: whitesmoke;
+      background-image: url('../img/tiger.jpg');
+      background-size: cover;
+    }
+    label {
+      position: fixed;
+      white-space: nowrap;
+    }
 
 #text-container{
     color: whitesmoke;
@@ -144,6 +155,7 @@ body, html{margin:0; padding: 0;}
     z-index: 13;
     right: -33em;
     overflow-y: scroll;
+    /*overflow-x:none;*/
 }
 
 footer{
@@ -181,23 +193,11 @@ footer .button:hover{
 
 #title{
     /* Layout */
-    float: left;
-    margin: 5% 5% 5% 5%;
+    position: absolute;
+    bottom: 1%;
+    left:1%;
 
-    /* Font */
-    font-family: 'Comic Neue', sans-serif;
-    font-weight: 400;
-
-    /* Enable a font's kerning: http://stackoverflow.com/questions/15160897/font-feature-settings-what-is-the-correct-syntax */
-    font-feature-settings: "kern";
-    -moz-font-feature-settings: "kern";
-    -webkit-font-feature-settings: "kern";
-
-    color: #f1c40f;
-    font-style: italic;
-    font-size: 2em;
-
-    border-bottom: solid 1px #f1c40f;
+    width: 25%;
 
 }
 

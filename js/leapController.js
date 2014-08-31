@@ -67,7 +67,7 @@
 		              else if(velocity[0] < 0 && velocity[1] < 0 && velocity[2] > 0) {if(welcome==true) {setText("Welcome.");welcome=true;}}
 		            }
 		            else if(numOfExtended() <=2){
-		            	if(velocity[1] > 0) {setText("I"); break;}
+		            	if(velocity[2] > 0) {setText("I"); break;}
 		            } 
 		          }
                                       
