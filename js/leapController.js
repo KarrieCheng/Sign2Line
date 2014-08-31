@@ -31,7 +31,7 @@
    var hello = true;
    var welcome = true;
    var excited = true;
-    
+   var our = true;
     
 	var controller = Leap.loop({enableGestures: true}, function(frame){
     function numOfExtended(){
@@ -56,26 +56,28 @@
 	              console.log("one hand");
 	              var hand = frame.hands[0];
 	              var velocity = hand.palmVelocity;
-	              if(gesture.type== 'circle') { break;}
+	              if(gesture.type== 'circle') { setText("our");our=false; break;}
                    
 	              else {
                     if(numOfExtended() ==1){
-		            	if(frame.hands[0].indexFinger.direction[2] < -0.60) {setText("you");}}
-	              	else if(numOfExtended() >= 3) {
-	              	  if (hand.fingers[1].direction[1] > .7) {setText("our");}
-		              else if(velocity[0] > 0 && velocity[1] > 0 && velocity[2] < 0) {if(hello==true) {setText("Hello!");hello=true;}}
-		              else if(velocity[0] < 0 && velocity[1] < 0 && velocity[2] > 0) {if(welcome==true) {setText("Welcome.");welcome=true;}}
+		            	if(frame.hands[0].indexFinger.direction[2] < -0.60) {setText("you");}
+		            	if(frame.hands[0].indexFinger.direction[2] > 0 && frame.hands[0].indexFinger.direction[1] > 0.50) {setText("I");}
 		            }
-		            else if(numOfExtended() <=2){
-		            	if(velocity[2] > 0) {setText("I"); break;}
-		            } 
+	              	else if(numOfExtended() >= 3) {
+	              	//  if (hand.fingers[1].direction[1] > .7) {if(our==true) {setText("our");our=false;}}
+		              if(velocity[0] > 0 && velocity[1] > 0 && velocity[2] < 0) {if(hello==true) {setText("Hello!");hello=true;}}
+		              else if(velocity[1] < 0 && velocity[2] < 0 && frame.hands[0].middleFinger.direction[2] < -0.8) {setText("Thank you"); break;}
+		              else if(velocity[0] < 0 && velocity[1] < 0 && velocity[2] > 0 && frame.hands[0].middleFinger.direction[0] < -0.4) {if(welcome==true) {setText("Welcome.");welcome=true;}}
+		   
+		            }
+		          //  else if(numOfExtended() <=2)
 		          }
                                       
 
 	              break;
 	          case 2:
 	              console.log("two hands");
-	              if(numOfExtended() == 7) {setText("program");}
+	              if(numOfExtended() == 7) {setText("program.");}
 	              else if(gesture.type == 'circle') {
 	              	if(numOfExtended() >= 6) {
 	              		if(excited==true) {setText("am excited for"); excited = true;}
